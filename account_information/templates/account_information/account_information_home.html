@@ -1,0 +1,63 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Account Information{% endblock %} 
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<h1>Account Information</h1>
+<br>
+<body>
+    <br>
+    <h3>Dealership Information</h3>
+    <br>
+    {% if dealership %}
+        <ul>
+            {% for dealer in dealership %}
+                <h5>{{ dealer.name }}</h5>
+                <p>Address: {{ dealer.address }}</p>
+                <p>Phone: {{ dealer.phone }}</p>
+                <p>Email: {{ dealer.email }}</p>
+                <hr>
+                <a href="{% url 'edit_dealer' dealer.id %}">
+                    <button class="btn btn-success">Edit Dealership</button>
+                </a>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Please Enter Dealership Information.</p>
+        <a href="/dealership-information">
+            <button class="btn btn-success">Add Dealership</button>
+        </a>    
+    {% endif %}
+</body>
+
+<body>
+    <br>
+    <h3>Lienholder Information</h3>
+    <br>
+    {% if lienholders %}
+        <ul>
+        {% for lienholder in lienholders %}
+            <li>
+                <h5>{{ lienholder.name }}</h5>
+                <p>Phone: {{ lienholder.phone }}</p>
+                <p>Email: {{ lienholder.email }}</p>
+                <a href="{% url 'edit_lienholder' lienholder.id %}">View</a>
+                <a href="{% url 'delete_lienholder' lienholder.id %}">Delete</a>
+                <hr>
+                <!-- Display other lienholder fields here as needed -->
+            </li>
+        {% endfor %}
+            <a href="/lienholder-information">
+                <button class="btn btn-success">Add Lienholder</button>
+            </a>
+        </ul>
+    {% else %}
+        <p>No Lienholder Entered Yet.</p>
+        <a href="/lienholder-information">
+            <button class="btn btn-success">Add Lienholder</button>
+        </a>    
+    {% endif %}
+</body>
+{% endblock %}

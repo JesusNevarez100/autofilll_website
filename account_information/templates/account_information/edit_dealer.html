@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+<!DOCTYPE html>
+<html>
+
+    {% block title %}Edit Dealership Information{% endblock %}
+    
+    {% load crispy_forms_tags %}
+    {% block content %}
+    <body>
+        <h3>Edit Dealership Information</h3>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <br>
+            <input type="submit" value="Save Changes" class="btn btn-success">
+        </form>
+    </body>
+    {% endblock %}
+    </html>

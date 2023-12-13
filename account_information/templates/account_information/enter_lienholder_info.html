@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Enter Lienholder Informaition{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3>Enter Lienholder Information</h3>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{lienholder_form|crispy}}
+    <br>
+    <input type="submit" name="Save" class="btn btn-success">
+</form>
+
+{% endblock %}
