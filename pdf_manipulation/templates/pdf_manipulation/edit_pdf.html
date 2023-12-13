@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+
+{% block title %}Upload PDF{% endblock %}
+
+{% block content %} 
+    <h1>Edit PDF</h1>
+    <div id="pdf-canvas-container"></div>
+    <button id="save-button">Save Text Button</Button></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        function renderPDF(pdfURL, text_boxes){
+           // import rendering logic using report lab 
+        }
+
+    // Implement the logic to load the PDF and text boxes here
+    // You can use AJAX to fetch the text boxes from the backend
+    
+    //Function to save text boxes
+    function saveTextBoxes(text_boxes_json){
+        $.ajax({
+            type: 'POST',
+            url: '{% durl "edit_pdf" uploaded_pdf_id=uploaded_pdf.id %}',
+            data: {
+                'text_boxes_json': text_boxes_json
+            },
+            success: function(response){
+                console.log('Error occurred while saving text boxes.')
+            }
+        });
+    }
+
+    $('#save-button').on('click', function () {
+        // Implement the logic to get the text boxes from the canvas
+        // and convert them to JSON format
+        const text_boxes = [];
+        
+        // convert the text_boxes to JSON format
+        const text_boxes_json = JSON.stringify(text_boxes);
+
+        // Call the function to save the text box
+        saveTextBoxes(text_boxes_json);
+
+
+    });
+    </script>
+    {% endblock %}

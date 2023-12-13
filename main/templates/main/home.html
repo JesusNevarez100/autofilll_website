@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<h1>Home Page</h1>
+<!-- {% if user.is_authenticated %}
+{% else %}
+    <p>Login <a href="/login">Here</a> </p>
+{% endif %} -->
+{% endblock %}

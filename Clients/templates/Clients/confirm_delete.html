@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+<!DOCTYPE html>
+<html>
+
+    {% block title %}Confirm Deletion{% endblock %}
+    
+    {% load crispy_forms_tags %}
+    {% block content %}
+    <body>
+        <h3>Confirm Deletion</h3>
+        <p>Are you sure you want to delete {{ client.name }} from your Client Vault?</p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
+    </body>
+    {% endblock %}
+    </html>
